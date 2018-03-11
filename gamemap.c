@@ -19,6 +19,7 @@
 
 #define NBAI 4 //Number of Players
 
+//For Console Only
 #define MAPV '.' //Map Void aka empty charac
 #define MAPM '=' //Map Mur
 #define MAPC 'O' //Map Coin
@@ -47,7 +48,7 @@ void		fprint_state(int **map, int n, int *ai_ar_pos, int *ai_ar_act, int turn, i
 
 void		print_current_state(int **map, int n, int turn, int maxturn); //Print Current State of game
 
-int		place_coin(int **map, int n); // Randomly place AI in map
+int		place_coin(int **map, int n); // Randomly place Coin in map
 
 int		place_ai(int **map, int n, int ai_nb); // Randomly place AI in map
 
@@ -122,7 +123,7 @@ int		**new_2d_array(int n)
 	int	x = 0;
 	int	y = 0;
 
-
+	//Give a Precalculated Map if size == 8
 	if (n == 8)
 	{
 		int maphuit[8][8] = {
@@ -368,8 +369,6 @@ int		ai_action(int **map, int n, int ai_t, int *ai_ar_val, int *ai_ar_pos, int a
 
 		case 1: //Move Up
 
-			//map[x][y] = MAPV; //Set position to empty
-
 			if (x - 1 >= 0) //Check if going out of array
 			{
 				if (map[x-1][y] == MAPV || map[x-1][y] == MAPC)
@@ -384,20 +383,13 @@ int		ai_action(int **map, int n, int ai_t, int *ai_ar_val, int *ai_ar_pos, int a
 					map[x-1][y] = ai_ar_val[ai_t];
 					ai_ar_pos[ai_t] = (x-1) * n + y;
 				}
-				//else
-				//	map[x][y] = ai_ar_val[ai_t];
-
 			}
-			//else
-			//	map[x][y] = ai_ar_val[ai_t];
-
+			
 			return (1);
 			break;
 
 		case 2: //Move Down
-
-			//map[x][y] = MAPV; //Set position to empty
-
+			
 			if (x + 1 < n) //Check if going out of array
 			{
 				if (map[x+1][y] == MAPV || map[x+1][y] == MAPC)
@@ -412,19 +404,13 @@ int		ai_action(int **map, int n, int ai_t, int *ai_ar_val, int *ai_ar_pos, int a
 					map[x+1][y] = ai_ar_val[ai_t];
 					ai_ar_pos[ai_t] = (x+1) * n + y;
 				}
-				//else
-				//	map[x][y] = ai_ar_val[ai_t];
 			}
-			//else
-			//	map[x][y] = ai_ar_val[ai_t];
 
 			return (2);
 			break;
 
 		case 3: //Move Left
-
-			//map[x][y] = MAPV; //Set position to empty
-
+			
 			if (y - 1 >= 0) //Check if going out of array
 			{
 				if (map[x][y-1] == MAPV || map[x][y-1] == MAPC)
@@ -439,19 +425,13 @@ int		ai_action(int **map, int n, int ai_t, int *ai_ar_val, int *ai_ar_pos, int a
 					map[x][y-1] = ai_ar_val[ai_t];
 					ai_ar_pos[ai_t] = x * n + (y-1);
 				}
-				//else
-				//	map[x][y] = ai_ar_val[ai_t];
 			}
-			//else
-			//	map[x][y] = ai_ar_val[ai_t];
 
 			return (3);
 			break;
 
 		case 4: //Move Right
-
-			//map[x][y] = MAPV; //Set position to empty
-
+			
 			if (y + 1 < n) //Check if going out of array
 			{
 				if (map[x][y+1] == MAPV || map[x][y+1] == MAPC)
@@ -466,11 +446,7 @@ int		ai_action(int **map, int n, int ai_t, int *ai_ar_val, int *ai_ar_pos, int a
 					map[x][y+1] = ai_ar_val[ai_t];
 					ai_ar_pos[ai_t] = x * n + (y+1);
 				}
-				//else
-				//	map[x][y] = ai_ar_val[ai_t];
 			}
-			//else
-			//	map[x][y] = ai_ar_val[ai_t];
 
 			return (4);
 			break;
@@ -496,7 +472,7 @@ int		ai_action(int **map, int n, int ai_t, int *ai_ar_val, int *ai_ar_pos, int a
 						{
 							Scores[ai_t] = Scores[ai_t] + 3;
 							map[x][y] = MAPV;
-							//ai_ar_pos[trash] = -20 - trash;
+							//ai_ar_pos[trash] = -20 - trash; //Uncomment and AI Die
 							ai_ar_pos[trash] = place_ai(map, n, CAREA + trash);
 
 							return (5);
@@ -530,7 +506,7 @@ int		ai_action(int **map, int n, int ai_t, int *ai_ar_val, int *ai_ar_pos, int a
 						{
 							Scores[ai_t] = Scores[ai_t] + 3;
 							map[x][y] = MAPV;
-							//ai_ar_pos[trash] = -20 - trash;
+							//ai_ar_pos[trash] = -20 - trash; //Uncomment and AI Die
 							ai_ar_pos[trash] = place_ai(map, n, CAREA + trash);
 
 							return (6);
@@ -565,7 +541,7 @@ int		ai_action(int **map, int n, int ai_t, int *ai_ar_val, int *ai_ar_pos, int a
 						{
 							Scores[ai_t] = Scores[ai_t] + 3;
 							map[x][y] = MAPV;
-							//ai_ar_pos[trash] = -20 - trash;
+							//ai_ar_pos[trash] = -20 - trash; //Uncomment and AI Die
 							ai_ar_pos[trash] = place_ai(map, n, CAREA + trash);
 
 							return (7);
@@ -599,7 +575,7 @@ int		ai_action(int **map, int n, int ai_t, int *ai_ar_val, int *ai_ar_pos, int a
 						{
 							Scores[ai_t] = Scores[ai_t] + 3;
 							map[x][y] = MAPV;
-							//ai_ar_pos[trash] = -20 - trash;
+							//ai_ar_pos[trash] = -20 - trash; //Uncomment and AI Die
 							ai_ar_pos[trash] = place_ai(map, n, CAREA + trash);
 
 							return (8);
@@ -655,28 +631,21 @@ int		start_game(int **map, int n, int maxturn)
 	}
 	ai_t = 0;
 
+	//Use txt file to prepare Unreal Engine
 	fwait = fopen("map.txt", "w");
-
 	ClearTerm();
-
 	//fprint_state(map, n, ai_ar_pos, turn, maxturn);
 	//print_current_state(map, n, turn, maxturn);
 
 	Wait();
-
 	fclose(fwait);
-
-	//Wait();
 
 	while (turn <= maxturn)
 	{
-
 		ClearTerm();
 
 		while (ai_t < NBAI)
 		{
-
-
 			if (ai_ar_pos[ai_t] >= 0)
 			{
 				my_ai_pos[0] = ai_ar_pos[ai_t] % n;
@@ -693,10 +662,8 @@ int		start_game(int **map, int n, int maxturn)
 
 			fprint_state(map, n, ai_ar_pos, ai_ar_act, turn, maxturn); 
 
-
 			//print_current_state(map, n, turn, maxturn);
 			//Wait();
-
 
 			//Comment for better use in Console
 			//Dodo(1000);
@@ -708,7 +675,6 @@ int		start_game(int **map, int n, int maxturn)
 		print_current_state(map, n, turn, maxturn);
 
 		turn++;
-
 
 		//Remove Comment to use in console
 		Wait();
@@ -723,14 +689,12 @@ int		start_game(int **map, int n, int maxturn)
 int		main(int argc, char **argv)
 {
 	//Base Value
-
 	int	taillemap = 8;
 	int	maxturn = 30;
 
 	srand(time(NULL));
-
-	argc = argc; //Remove Wall error
-
+	
+	//Check If Parameters are given (1: map size, 2: Nb of turn
 	if (argv[1] != NULL)
 		taillemap = atoi(argv[1]);
 
