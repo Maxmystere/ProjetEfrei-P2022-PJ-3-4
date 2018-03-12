@@ -3,8 +3,8 @@
 Equipe Arene : **Ainz Ooal Gown**
 
 ### Membres :
-* GRAB Maxence
-* PAYET Stanislas
+* **GRAB Maxence**
+* **PAYET Stanislas**
 * CHACHOUR Mohamed
 * *GONNOT Vianney*
 * *GAILHAC Louis*
