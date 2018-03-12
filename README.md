@@ -6,9 +6,9 @@ Equipe Arene : **Ainz Ooal Gown**
 * GRAB Maxence
 * PAYET Stanislas
 * CHACHOUR Mohamed
-* GONNOT Vianney
-* GAILHAC Louis
-* BERNET Vincent
+* *GONNOT Vianney*
+* *GAILHAC Louis*
+* *BERNET Vincent*
 
 ## Current Github Files
 
